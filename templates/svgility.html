@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+		<title>SVGility Demo</title>
+		<link rel="stylesheet" type="text/css" href="svgility-defaults.css">
+	</head>
+
+	<body>
+
+		<h2>Hi</h2>
+
+		<div id="new-destiny">
+			<div class="fallset svgility-box">
+				<div class="svgility-set">
+
+					{% for item in thumbfiles %}
+						<div class="svgility-block svg-media">
+							<div class="folderpath">
+							asdf
+							</div>
+							<a href="{{ item }}">
+								<div>
+									<span>{{ item }}</span>
+								</div>
+								<img src="{{ item }}" alt="{{ item }}" />
+							</a>
+						</div>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+		<h2>Hi2</h2>
+		blah blah
+
+		<h2>Hi3</h2>
+
+		<script src="svgility.js"></script>
+		<script type="text/javascript">
+			svgility.ignite('#new-destiny', {
+				polyShape: 'chevrondown',
+				columns: 6,
+				invert: { active: true,
+				direction: 'normal'},
+				//centerBottom: true,
+				padding: '4px',
+				evenOdd: false,
+				verticalTrim: 37
+			});
+		</script>
+
+	</body>
+</html>

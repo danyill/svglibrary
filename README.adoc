@@ -1,0 +1,10 @@
+= SVG Library
+
+Based on the fine work of https://github.com/maverickvector[maverickvector] in https://github.com/maverickvector/SVGility-Gallery-Script[SVGility-Gallery-Script]. This is a static gallery for SVG images implemented in javascript with a Python script intended to be implemented server side to refresh the page as required.
+
+== Installation
+
+* Requires Python 2.7.
+* `pip install jinja2 watchdog`
+* Simply open the `svgility.html` in the base directory
+* Probably nothing is rendered unless an image is moved in the `images` directory off the base directory.
