@@ -6,5 +6,7 @@ Based on the fine work of https://github.com/maverickvector[maverickvector] in h
 
 * Requires Python 2.7.
 * `pip install jinja2 watchdog`
-* Simply open the `svgility.html` in the base directory
-* Probably nothing is rendered unless an image is moved in the `images` directory off the base directory.
+* Run `svglibrary` file
+* Open the `svglibrary.html` in the base directory in a (modern) browser
+* Drop some images into the `images` directory off the base directory
+* Refresh (`F5`) and see your thumbnails

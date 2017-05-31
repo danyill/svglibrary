@@ -1,3 +1,5 @@
+#!/usr/bin/python2
+
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -15,9 +17,9 @@ env = Environment(
 
 def update():
     print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updating web page")
-    file = 'svgility.html'
+    file = 'svglibrary.html'
     mypath = 'images'
-    template = env.get_template('svgility.html')
+    template = env.get_template('svglibrary.html')
     onlyfiles = [y for x in os.walk(mypath) for y in glob(os.path.join(x[0], '*.svg'))]
     with open(file, 'wb') as f:
         f.write(template.render(thumbfiles=onlyfiles))
