@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
-		<title>SVGility Demo</title>
+		<meta name="keywords" content="SVG, HTML, CSS, XML, XHTML, JavaScript, Python">
+		<title>SVG Library</title>
 		<link rel="stylesheet" type="text/css" href="svgility-defaults.css">
 	</head>
 
@@ -13,15 +13,12 @@
 
 		<h2>Hi</h2>
 
-		<div id="new-destiny">
+		<div id="new-library">
 			<div class="fallset svgility-box">
 				<div class="svgility-set">
 
 					{% for item in thumbfiles %}
 						<div class="svgility-block svg-media">
-							<div class="folderpath">
-							asdf
-							</div>
 							<a href="{{ item }}">
 								<div>
 									<span>{{ item }}</span>
@@ -34,6 +31,7 @@
 				</div>
 			</div>
 		</div>
+
 		<h2>Hi2</h2>
 		blah blah
 
@@ -41,9 +39,9 @@
 
 		<script src="svgility.js"></script>
 		<script type="text/javascript">
-			svgility.ignite('#new-destiny', {
+			svgility.ignite('#new-library', {
 				polyShape: 'chevrondown',
-				columns: 6,
+				columns: 8,
 				invert: { active: true,
 				direction: 'normal'},
 				//centerBottom: true,
@@ -52,6 +50,21 @@
 				verticalTrim: 37
 			});
 		</script>
-
+		<!-- Your option instead of chevrondown are:
+		chevrondown
+		shardPat1
+		diamondTall
+		diamondBase
+		twentyStar
+		fiveStar
+		fourStar
+		octagonBase
+		heptagonBase
+		hexagonFlat
+		hexagonBase
+		pentagonBase
+		triangleRound
+		triangleBase
+		circleBase -->
 	</body>
 </html>

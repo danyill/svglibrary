@@ -6,24 +6,30 @@ from glob import glob
 import os
 import sys
 import time
+from datetime import datetime
 
 env = Environment(
     loader=FileSystemLoader('templates'),
     autoescape=select_autoescape(['html'])
 )
 
+def update():
+    print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updating web page")
+    file = 'svgility.html'
+    mypath = 'images'
+    template = env.get_template('svgility.html')
+    onlyfiles = [y for x in os.walk(mypath) for y in glob(os.path.join(x[0], '*.svg'))]
+    with open(file, 'wb') as f:
+        f.write(template.render(thumbfiles=onlyfiles))
+
 class Event(LoggingEventHandler):
 
     def dispatch(self, event):
-        print("Updating web page")
-        self.file = 'svgility.html'
-        self.mypath = 'images'
-        template = env.get_template('svgility.html')
-        onlyfiles = [y for x in os.walk(self.mypath) for y in glob(os.path.join(x[0], '*.svg'))]
-        with open(self.file, 'wb') as f:
-            f.write(template.render(thumbfiles=onlyfiles))
+        update()
 
 if __name__ == "__main__":
+
+    update()
 
     event = Event()
     observer = Observer()

@@ -221,7 +221,7 @@ var svgility = (function(){
 			// Check invert settings
 			if(svgBreaks[7].direction == 'all') {
 				parityBlock = 2;
-			} else if(svgBreaks[7].direction == 'reverse') {
+			} else if (svgBreaks[7].direction == 'reverse') {
 				parityBlock = 1;
 			} else {
 				parityBlock = 0;

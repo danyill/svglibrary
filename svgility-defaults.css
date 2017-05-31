@@ -118,8 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 	transition:opacity .5s, z-index .5s;
 	padding:0;
 	margin:0;
-	background-color: rgb(0,0,0);
-	background-color:rgba(0,0,0,0.8);
+	background-color:rgba(0,0,0,0.2);
 	cursor:pointer;
 }
 
@@ -154,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 	bottom:0;
 	left:0;
 	margin-bottom:50px;
-	background-color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, 0.95);
 }
 
 .modal-info {
