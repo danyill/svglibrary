@@ -16,21 +16,20 @@
 		<a href="#{{quote(item)}}"><span class="tag">{{ item }}</span></a>
 		{% endfor %}
 
-		{% for item in thumbfiles %}
-		<span><a name="{{ item }}" href="#gototags"><h2>{{ item }}</h2></a></span>
-		{% endfor %}
+		{% for key, value in thumbfiles.iteritems() %}
+		<span><a name="{{ key }}" href="#gototags"><h2>{{ key }}</h2></a></span>
 
 		<div class="new-library">
 			<div class="fallset svgility-box">
 				<div class="svgility-set">
 
-					{% for item in thumbfiles %}
+					{% for v in value %}
 						<div class="svgility-block svg-media">
-							<a href="{{ item }}">
+							<a href="{{ v }}">
 								<div>
-									<span>{{ item }}</span>
+									<span>{{ v }}</span>
 								</div>
-								<img src="{{ item }}" alt="{{ item }}" />
+								<img src="{{ v }}" alt="{{ v }}" />
 							</a>
 						</div>
 					{% endfor %}
@@ -38,6 +37,8 @@
 				</div>
 			</div>
 		</div>
+		{% endfor %}
+
 
 		<h2>Hi2</h2>
 		blah blah
@@ -47,7 +48,7 @@
 		<script src="svglibrary.js"></script>
 		<script type="text/javascript">
 			svgility.ignite('.new-library', {
-				polyShape: 'squareBox',
+				polyShape: 'chevrondown',
 				columns: 8,
 				invert: { active: true,
 				direction: 'normal'},
@@ -73,7 +74,7 @@
 		triangleRound
 		triangleBase
 		circleBase
-                squareBox (jor Jarrad)
-                -->
+    squareBox (jor Jarrad)
+    -->
 	</body>
 </html>

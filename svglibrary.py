@@ -17,21 +17,6 @@ env = Environment(
 )
 env.globals['quote'] = urllib.quote
 
-def update():
-    print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updating web page")
-    file = 'svglibrary.html'
-    mypath = 'images'
-    template = env.get_template('svglibrary.html')
-    onlyfiles = [y for x in os.walk(mypath) for y in glob(os.path.join(x[0], '*.svg'))]
-    with open(file, 'wb') as f:
-        f.write(template.render(thumbfiles=onlyfiles))
-
-class Event(LoggingEventHandler):
-
-    def dispatch(self, event):
-        update()
-
-
 def pywalker(path):
     folderFiles = {}
     for dirName, subDirs, files in os.walk(path):
@@ -41,16 +26,24 @@ def pywalker(path):
         #    print( '  * ' + os.path.join(dirName, f) )
     return folderFiles
 
-if __name__ == "__main__":
+def update():
+    print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updating web page")
 
     tagsAndFiles = pywalker('images')
     file = 'svglibrary.html'
     mypath = 'images'
     template = env.get_template('svglibrary.html')
+
     with open(file, 'wb') as f:
         f.write(template.render(thumbfiles=tagsAndFiles, keys=tagsAndFiles.keys().sort()))
 
-    sys.exit(0)
+
+class Event(LoggingEventHandler):
+
+    def dispatch(self, event):
+        update()
+
+if __name__ == "__main__":
 
     update()
 
