@@ -4,9 +4,29 @@ Based on the fine work of https://github.com/maverickvector[maverickvector] in h
 
 == Installation
 
-* Requires Python 2.7.
-* `pip install jinja2 watchdog`
-* Run `svglibrary` file
-* Open the `svglibrary.html` in the base directory in a (modern) browser
-* Drop some images into the `images` directory off the base directory
-* Refresh (`F5`) and see your thumbnails
+. This requires Python 2.7.
+. Install dependencies with: `pip install jinja2 watchdog`
+. Run `svglibrary.py` file, e.g. `C:\Python27\python svglibrary.py` if Python is not in your path.
+. Open the `svglibrary.html` in the base directory in a (modern) browser
+. Drop some images into the `images` directory off the base directory
+. Refresh (`F5`) and see your thumbnails
+
+== How It Works
+
+The folder structure can be whatever you wish. Take for example:
+
+  ├───images
+     └───Geographic
+         ├───NNI
+         ├───SI
+         └───SNI
+
+"Tags" will be generated for leaf folders (at the end of the tree) where there are svg files in the leaf folder. A hierarchy is not generated, tags are listed alphabetically.
+
+So:
+
+* If `Geographic` has no images, a `Geographic` tag will not be generated.
+* If `NNI` has SVG files a `NNI` tag will be generated.
+* If a folder has no images, no tag wil be generated.
+
+That is all.

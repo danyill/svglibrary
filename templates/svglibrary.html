@@ -17,9 +17,9 @@
 		{% endfor %}
 
 		{% for key, value in thumbfiles.iteritems() %}
-		<span><a name="{{ key }}" href="#gototags"><h2>{{ key }}</h2></a></span>
+		<span><h2><a name="{{ key }}" href="#gototags">{{ key }}</a></h2></span>
 
-		<div class="new-library">
+		<div id="{{ key }}_obj">
 			<div class="fallset svgility-box">
 				<div class="svgility-set">
 
@@ -39,15 +39,10 @@
 		</div>
 		{% endfor %}
 
-
-		<h2>Hi2</h2>
-		blah blah
-
-		<h2>Hi3</h2>
-
 		<script src="svglibrary.js"></script>
 		<script type="text/javascript">
-			svgility.ignite('.new-library', {
+		{% for item in thumbfiles %}
+			svgility.ignite("#{{item}}_obj", {
 				polyShape: 'chevrondown',
 				columns: 8,
 				invert: { active: true,
@@ -57,6 +52,7 @@
 				evenOdd: false,
 				verticalTrim: 37
 			});
+		{% endfor %}
 		</script>
 		<!-- Your option instead of chevrondown are:
 		chevrondown

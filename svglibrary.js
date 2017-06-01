@@ -548,28 +548,31 @@ var svgility = (function(){
 
 			};
 
-			// Grab all elements in the last row
-			svgLastPos.push(svgUnit[i].style.top);
-			for (k = 0, j = svgUnit.length; k < j; k++ ){
-				if(svgUnit[i].style.top == svgLastPos){
-					bottomGrab = k + 1;
+			if (i !== undefined) {
+
+				// Grab all elements in the last row
+				svgLastPos.push(svgUnit[i].style.top);
+				for (k = 0, j = svgUnit.length; k < j; k++ ){
+					if(svgUnit[i].style.top == svgLastPos){
+						bottomGrab = k + 1;
+					};
 				};
-			};
-			// Center bottom row when active
-			if(svgUnit[i].style.top == svgLastPos && svgBlockColumns != 1 && svgCenterBottom == true){
-				if (svgEvenOdd == true) {
-					svgUnit[i].style.left = 0 + '%';
-					svgBlockPosX = 0;
+				// Center bottom row when active
+				if(svgUnit[i].style.top == svgLastPos && svgBlockColumns != 1 && svgCenterBottom == true){
+					if (svgEvenOdd == true) {
+						svgUnit[i].style.left = 0 + '%';
+						svgBlockPosX = 0;
+					};
+					svgBlockPosX += ((svgBlockPosX + (100 / svgBlockColumns))) * ((svgBlockColumns - bottomGrab) / 2);
+					/////////////
+					for (i = 0, j = svgUnit.length; i < j; i++ ){
+						svgUnit[i].style.width = (((mainWrap.clientWidth / svgBlockColumns) / mainWrap.clientWidth) * 100) + "%";
+						svgBlockPosX += (100 / svgBlockColumns);
+						svgUnit[i].style.left = (svgBlockPosX - (100 / svgBlockColumns)) + '%';
+					};
+					/////////////
 				};
-				svgBlockPosX += ((svgBlockPosX + (100 / svgBlockColumns))) * ((svgBlockColumns - bottomGrab) / 2);
-				/////////////
-				for (i = 0, j = svgUnit.length; i < j; i++ ){
-					svgUnit[i].style.width = (((mainWrap.clientWidth / svgBlockColumns) / mainWrap.clientWidth) * 100) + "%";
-					svgBlockPosX += (100 / svgBlockColumns);
-					svgUnit[i].style.left = (svgBlockPosX - (100 / svgBlockColumns)) + '%';
-				};
-				/////////////
-			};
+			}
 
 		},
 		// Responsive Breakpoint Controls

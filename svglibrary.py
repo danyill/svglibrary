@@ -10,6 +10,7 @@ import sys
 import time
 from datetime import datetime
 import urllib
+import collections
 
 env = Environment(
     loader=FileSystemLoader('templates'),
@@ -21,10 +22,12 @@ def pywalker(path):
     folderFiles = {}
     for dirName, subDirs, files in os.walk(path):
         # print dirName
-        folderFiles[dirName.split('\\')[-1]] = [os.path.join(dirName, f) for f in files]
-        # for f in files:
-        #    print( '  * ' + os.path.join(dirName, f) )
-    return folderFiles
+        file_list = [os.path.join(dirName, f) for f in files]
+        if file_list != []:
+            folderFiles[dirName.split('\\')[-1]] = file_list
+    folderFiles.pop('images')
+    all_sorted = collections.OrderedDict(sorted(folderFiles.items()))
+    return all_sorted
 
 def update():
     print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updating web page")

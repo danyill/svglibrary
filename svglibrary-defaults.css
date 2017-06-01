@@ -12,10 +12,25 @@ h1, h2, h3, h4, h5, h6 {
   font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size:40px;
 	text-align: center;
-	-webkit-box-shadow: 3 7px 4px #777;
 	-moz-box-shadow: 3 7px 4px #777;
-	box-shadow: 3 7px 4px #777;
+  text-align: center;
 }
+
+h2 a {
+  text-decoration:none;.
+	font-weight:      bold;
+  background-color: #ddd;
+  color:            blue;
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+	border-top-left-radius:50px;
+	border-top-right-radius:50px;
+	padding-bottom:3px;
+	padding-left:7px;
+	padding-right:7px;
+	padding-top:3px;
+}
+
 
 .svgility-box,
 .svgility-box * {
@@ -126,6 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 	opacity:1;
 	z-index:9999;
 }
+
 #svg-imgdisplay button {
 	position:absolute;
 	top:0;
@@ -140,6 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 	border:none;
 	cursor:pointer;
 }
+
 #svg-imgdisplay button:hover {
 	color:#aaa;
 	transition:color .5s;
@@ -336,21 +353,4 @@ h1, h2, h3, h4, h5, h6 {
 	vertical-align:baseline;
 	white-space:nowrap;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-
-span a {
-   background:black;
-   display:table;
-   padding:7px 10px;
-   color:white;
-	 text-align: center;
-	 font-size:40px;
-	 height: 40px;
-	 line-height: 40px;
-	 border-bottom-left-radius: 50px;
-	 border-bottom-right-radius: 50px;
-	 border-top-left-radius: 50px;
-	 border-top-right-radius: 50px;
-	 text-decoration:none;
 }
