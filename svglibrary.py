@@ -9,11 +9,13 @@ import os
 import sys
 import time
 from datetime import datetime
+import urllib
 
 env = Environment(
     loader=FileSystemLoader('templates'),
     autoescape=select_autoescape(['html'])
 )
+env.globals['quote'] = urllib.quote
 
 def update():
     print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updating web page")
@@ -29,7 +31,26 @@ class Event(LoggingEventHandler):
     def dispatch(self, event):
         update()
 
+
+def pywalker(path):
+    folderFiles = {}
+    for dirName, subDirs, files in os.walk(path):
+        # print dirName
+        folderFiles[dirName.split('\\')[-1]] = [os.path.join(dirName, f) for f in files]
+        # for f in files:
+        #    print( '  * ' + os.path.join(dirName, f) )
+    return folderFiles
+
 if __name__ == "__main__":
+
+    tagsAndFiles = pywalker('images')
+    file = 'svglibrary.html'
+    mypath = 'images'
+    template = env.get_template('svglibrary.html')
+    with open(file, 'wb') as f:
+        f.write(template.render(thumbfiles=tagsAndFiles, keys=tagsAndFiles.keys().sort()))
+
+    sys.exit(0)
 
     update()
 

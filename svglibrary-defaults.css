@@ -9,7 +9,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family:'arial', sans-serif;
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size:40px;
 	text-align: center;
 	-webkit-box-shadow: 3 7px 4px #777;
@@ -305,4 +305,52 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 		width: 100 px;
 		height: 100 px
+}
+
+.tag  {
+	display:inline-block;
+	background-color: rgb(39, 39, 39);
+	border-bottom-left-radius: 100px;
+	border-bottom-right-radius: 100px;
+	border-top-left-radius:100px;
+	border-top-right-radius:100px;
+	box-sizing:border-box;
+	color:rgb(255, 255, 255);
+	cursor:auto;
+	font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size:20px;
+	font-style:normal;
+	font-weight:normal;
+	height:26px;
+	line-height: 20px;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin: 5px;
+	padding-bottom:3px;
+	padding-left:7px;
+	padding-right:7px;
+	padding-top:3px;
+	text-align:center;
+	text-size-adjust:100%;
+	vertical-align:baseline;
+	white-space:nowrap;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+span a {
+   background:black;
+   display:table;
+   padding:7px 10px;
+   color:white;
+	 text-align: center;
+	 font-size:40px;
+	 height: 40px;
+	 line-height: 40px;
+	 border-bottom-left-radius: 50px;
+	 border-bottom-right-radius: 50px;
+	 border-top-left-radius: 50px;
+	 border-top-right-radius: 50px;
+	 text-decoration:none;
 }

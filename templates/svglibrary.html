@@ -11,9 +11,16 @@
 
 	<body>
 
-		<h2>Hi</h2>
+		<a name="gototags"><h2>Tags</h2></a>
+		{% for item in thumbfiles %}
+		<a href="#{{quote(item)}}"><span class="tag">{{ item }}</span></a>
+		{% endfor %}
 
-		<div id="new-library">
+		{% for item in thumbfiles %}
+		<span><a name="{{ item }}" href="#gototags"><h2>{{ item }}</h2></a></span>
+		{% endfor %}
+
+		<div class="new-library">
 			<div class="fallset svgility-box">
 				<div class="svgility-set">
 
@@ -39,7 +46,7 @@
 
 		<script src="svglibrary.js"></script>
 		<script type="text/javascript">
-			svgility.ignite('#new-library', {
+			svgility.ignite('.new-library', {
 				polyShape: 'squareBox',
 				columns: 8,
 				invert: { active: true,
