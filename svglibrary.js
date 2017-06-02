@@ -1014,20 +1014,22 @@ var svgility = (function(){
 
 				// Fill modal container with structure
 				modalBlock.innerHTML =
-				'<button>'+
+				'<button id="closebtn">'+
 				'&times;'+
 				'</button>'+
-				'<div class="modal-media">'+
+				'<div id="mm1" class="modal-media">'+
 					mediaElement+
 				'</div>'+
 				// span text
 				(svgSettings.text == true ?
 				'<div class="modal-info">'+
-				'<span title="'+
+				'<span id="actual_filename" title="'+
 				this.getElementsByTagName('title')[0].innerHTML+
 				'">'+
 				this.getElementsByTagName('title')[0].innerHTML+
-				'</span></div><p>xxx <button class="modal-info js-textareacopybtn">Copy Textarea</button> </p>': "");
+				'</span></div><button id="copybtn"><i class="fa fa-clipboard" aria-hidden="true"></i>'+
+				''+
+				'</button>': "");
 
 				// Insert modal container before svgility-set block
 				parentBlock.insertBefore(modalBlock, siblingBlock);
@@ -1040,13 +1042,16 @@ var svgility = (function(){
 				};
 
 				// Modal Container button triggers
-				if(document.getElementById('svg-imgdisplay').getElementsByTagName('img')[0]){
-					document.getElementById('svg-imgdisplay').getElementsByTagName('img')[0].addEventListener("click", modalCancel, false);
-				} else if(document.getElementById('svg-imgdisplay').getElementsByTagName('iframe')[0]){
-					document.getElementById('svg-imgdisplay').getElementsByTagName('iframe')[0].addEventListener("click", modalCancel, false);
+				if(document.getElementById('mm1').getElementsByTagName('img')[0]){
+					document.getElementById('mm1').getElementsByTagName('img')[0].addEventListener("click", modalCancel, false);
+				} else if(document.getElementById('mm1').getElementsByTagName('iframe')[0]){
+					document.getElementById('mm1').getElementsByTagName('iframe')[0].addEventListener("click", modalCancel, false);
 				};
 
-				document.getElementById('svg-imgdisplay').addEventListener("click", modalClose, false);
+				document.getElementById('copybtn').addEventListener("click", copyToClipboard, false);
+
+				document.getElementById('mm1').addEventListener("click", modalClose, false);
+				document.getElementById('closebtn').addEventListener("click", modalClose, false);
 
 			};
 
@@ -1074,6 +1079,58 @@ var svgility = (function(){
 			function modalCancel(e){
 				e.stopPropagation();
 			};
+
+			function copyToClipboard(e) {
+		            var elem = document.getElementById('actual_filename')
+			    // create hidden text element, if it doesn't already exist
+			    var targetId = "_hiddenCopyText_";
+			    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+			    var origSelectionStart, origSelectionEnd;
+			    if (isInput) {
+			        // can just use the original source element for the selection and copy
+			        target = elem;
+			        origSelectionStart = elem.selectionStart;
+			        origSelectionEnd = elem.selectionEnd;
+			    } else {
+			        // must use a temporary form element for the selection and copy
+			        target = document.getElementById(targetId);
+			        if (!target) {
+			            var target = document.createElement("textarea");
+			            target.style.position = "absolute";
+			            target.style.left = "-9999px";
+			            target.style.top = "0";
+			            target.id = targetId;
+			            document.body.appendChild(target);
+			        }
+			        target.textContent = document.getElementById('basepath').textContent + elem.textContent;
+			    }
+			    // select the content
+			    var currentFocus = document.activeElement;
+			    target.focus();
+			    target.setSelectionRange(0, target.value.length);
+
+			    // copy the selection
+			    var succeed;
+			    try {
+			    	  succeed = document.execCommand("copy");
+			    } catch(e) {
+			        succeed = false;
+			    }
+			    // restore original focus
+			    if (currentFocus && typeof currentFocus.focus === "function") {
+			        currentFocus.focus();
+			    }
+
+			    if (isInput) {
+			        // restore prior selection
+			        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+			    } else {
+			        // clear temporary content
+			        target.textContent = "";
+			    }
+			    return succeed;
+			};
+
 		}
 
 	}, // svgInfrastructure end marker

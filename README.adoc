@@ -10,6 +10,7 @@ Based on the fine work of https://github.com/maverickvector[maverickvector] in h
 . Open the `svglibrary.html` in the base directory in a (modern) browser
 . Drop some images into the `images` directory off the base directory
 . Refresh (`F5`) and see your thumbnails
+. To get a correct base path for the clipboard button in the top left, update `BASE_PATH` in `svglibrary.py`
 
 == How It Works
 

@@ -20,7 +20,7 @@ h2 a {
   text-decoration:none;.
 	font-weight:      bold;
   background-color: #ddd;
-  color:            blue;
+  color:            rgba(52,52,242,0.99);
 	border-bottom-left-radius: 50px;
 	border-bottom-right-radius: 50px;
 	border-top-left-radius:50px;
@@ -179,7 +179,7 @@ h2 a {
 	position:absolute;
 	left:0;
 	bottom:0;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
 #svg-imgdisplay img,
@@ -207,13 +207,22 @@ h2 a {
 	width:75%;
 	display:block;
 	margin:0 auto;
-	color:#fff;
+	color:rgba(52,52,242,0.99);
 	line-height:50px;
 	text-align:center;
 	letter-spacing:2px;
 	text-overflow: ellipsis;
 	overflow:hidden;
 	white-space:nowrap;
+}
+
+#svg-imgdisplay button {
+	color:rgb(52,52,242)
+}
+
+#svg-imgdisplay #copybtn {
+  position: relative;
+  color: rgb(52,52,242);
 }
 
 /***FALLBACKS***/
@@ -326,13 +335,13 @@ h2 a {
 
 .tag  {
 	display:inline-block;
-	background-color: rgb(39, 39, 39);
+	background-color: rgb(200, 200, 200);
 	border-bottom-left-radius: 100px;
 	border-bottom-right-radius: 100px;
 	border-top-left-radius:100px;
 	border-top-right-radius:100px;
 	box-sizing:border-box;
-	color:rgb(255, 255, 255);
+	color:rgb(52, 52, 242);
 	cursor:auto;
 	font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size:20px;
@@ -353,4 +362,29 @@ h2 a {
 	vertical-align:baseline;
 	white-space:nowrap;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#basepath {
+  display: none;
+}
+
+button {
+  background: #ededed;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 1px 1px 2px #ccc;
+     -moz-box-shadow: 1px 1px 2px #ccc;
+          box-shadow: 1px 1px 2px #ccc;
+  padding: 10px 30px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:focus {
+  background: #e0e0e0;
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 4px #ccc;
+     -moz-box-shadow: inset 0px 0px 4px #ccc;
+          box-shadow: inset 0px 0px 4px #ccc;
+}
+
 }

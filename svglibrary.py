@@ -12,6 +12,12 @@ from datetime import datetime
 import urllib
 import collections
 
+# need / or \ on end!
+BASE_PATH = r'W:\Education\Current\svg_library\\'
+BASE_PATH = r'/media/veracrypt51/Education/Current/svg_library/'
+
+
+
 env = Environment(
     loader=FileSystemLoader('templates'),
     autoescape=select_autoescape(['html'])
@@ -24,7 +30,7 @@ def pywalker(path):
         # print dirName
         file_list = [os.path.join(dirName, f) for f in files]
         if file_list != []:
-            folderFiles[dirName.split('\\')[-1]] = file_list
+            folderFiles[os.path.split(dirName)[-1]] = file_list
     folderFiles.pop('images')
     all_sorted = collections.OrderedDict(sorted(folderFiles.items()))
     return all_sorted
@@ -37,8 +43,9 @@ def update():
     mypath = 'images'
     template = env.get_template('svglibrary.html')
 
+
     with open(file, 'wb') as f:
-        f.write(template.render(thumbfiles=tagsAndFiles, keys=tagsAndFiles.keys().sort()))
+        f.write(template.render(thumbfiles=tagsAndFiles, keys=tagsAndFiles.keys().sort(), basepath=BASE_PATH))
 
 
 class Event(LoggingEventHandler):
