@@ -46,7 +46,7 @@ h2 a {
 	-moz-backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
 	font-family:'arial', sans-serif;
-	text-transform:uppercase;
+	/* text-transform:uppercase; */
 }
 
 .svgility-box.svgengage {

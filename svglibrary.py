@@ -12,11 +12,7 @@ from datetime import datetime
 import urllib
 import collections
 
-# need / or \ on end!
-BASE_PATH = r'W:\Education\Current\svg_library\\'
-BASE_PATH = r'/media/veracrypt51/Education/Current/svg_library/'
-
-
+BASE_PATH = os.path.abspath(os.path.dirname(sys.argv[0])) + os.path.sep
 
 env = Environment(
     loader=FileSystemLoader('templates'),
@@ -27,7 +23,6 @@ env.globals['quote'] = urllib.quote
 def pywalker(path):
     folderFiles = {}
     for dirName, subDirs, files in os.walk(path):
-        # print dirName
         file_list = [os.path.join(dirName, f) for f in files]
         if file_list != []:
             folderFiles[os.path.split(dirName)[-1]] = file_list
@@ -36,16 +31,18 @@ def pywalker(path):
     return all_sorted
 
 def update():
-    print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updating web page")
 
+    # we sleep a second in case the user has copied a number of files to minimise the events
+    time.sleep(1)
     tagsAndFiles = pywalker('images')
     file = 'svglibrary.html'
     mypath = 'images'
     template = env.get_template('svglibrary.html')
 
-
     with open(file, 'wb') as f:
         f.write(template.render(thumbfiles=tagsAndFiles, keys=tagsAndFiles.keys().sort(), basepath=BASE_PATH))
+
+    print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') + "    Updated web page")
 
 
 class Event(LoggingEventHandler):

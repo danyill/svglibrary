@@ -1023,13 +1023,13 @@ var svgility = (function(){
 				// span text
 				(svgSettings.text == true ?
 				'<div class="modal-info">'+
-				'<span id="actual_filename" title="'+
-				this.getElementsByTagName('title')[0].innerHTML+
-				'">'+
+                                '<span id="actual_filename" title="'+
+                                this.getElementsByTagName('title')[0].innerHTML+
+                                '">'+
 				this.getElementsByTagName('title')[0].innerHTML+
 				'</span></div><button id="copybtn"><i class="fa fa-clipboard" aria-hidden="true"></i>'+
 				''+
-				'</button>': "");
+				'</button><textarea id="_hiddenCopyText_">hidden</textarea>': "");
 
 				// Insert modal container before svgility-set block
 				parentBlock.insertBefore(modalBlock, siblingBlock);
@@ -1096,9 +1096,10 @@ var svgility = (function(){
 			        target = document.getElementById(targetId);
 			        if (!target) {
 			            var target = document.createElement("textarea");
-			            target.style.position = "absolute";
-			            target.style.left = "-9999px";
-			            target.style.top = "0";
+				    target.className = "modal-media"
+			            target.style.position = "relative";
+			            //target.style.left = "-9999px";
+			            //target.style.top = "0";
 			            target.id = targetId;
 			            document.body.appendChild(target);
 			        }
